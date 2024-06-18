@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Hair Styles</title>
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+	<div class="sidebar">
+		<ul>
+			<li><a href="/" th:href="@{/}">Dashboard</a></li>
+			<li><a href="/about" th:href="@{/about}">About Us</a></li>
+			<li><a href="/hairstyles" th:href="@{/hairstyles}">Hair Styles</a></li>
+			<li><a href="/address" th:href="@{/address}">Address</a></li>
+			<li><a href="/contact" th:href="@{/contact}">Contact</a></li>
+		</ul>
+	</div>
+	<div class="content">
+		<h1>Hair Styles</h1>
+		<div th:each="style : ${hairstyles}">
+			<h2 th:text="${style.name}"></h2>
+			<p th:text="${style.description}"></p>
+			<p>Price: $<span th:text="${style.price}"></span></p>
+			<img th:src="@{/images/{imageName}(imageName=${style.imageName})}" alt="Image" />
+		</div>
+	</div>
+</body>
+
+</html>
